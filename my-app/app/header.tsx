@@ -1,4 +1,5 @@
-import React from 'react';
+"use client"
+import React, { useState } from 'react';
 import {
     Drawer,
     DrawerClose,
@@ -18,14 +19,15 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
-  
+  import { Squash as Hamburger } from 'hamburger-react'
+
 
 function Header() {
-   
+    const [isOpen, setOpen] = useState(false)
     return (
         <>
          
-            <div className='flex justify-center'>
+            <div className='xl:flex justify-center p-10  hidden '>
                 <div className='flex gap-9'>
                     <a href="">Home</a>
                     <a href="">Movies</a>
@@ -44,18 +46,32 @@ function Header() {
 
 
         {/*Mobile Nav*/}
-         <div className='lg:hidden'>
+         <div className='xl:hidden'>
             <Drawer>
-                <DrawerTrigger>Open</DrawerTrigger>
+                <DrawerTrigger><Hamburger  toggle={setOpen} /></DrawerTrigger>
                 
                     <DrawerContent className='inset-y-0 right-0 h-auto w-1/2 rounded-l-[10px]'>
                         <DrawerHeader>
-                            <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-                            <DrawerDescription>This action cannot be undone.</DrawerDescription>
+                            <DrawerTitle>Movio</DrawerTitle>
+                            <DrawerDescription>For the movie people</DrawerDescription>
                         </DrawerHeader>
+                        <div className='flex flex-col justify-center items-center gap-9 h-1/2'>
+                            <a href="">Home</a>
+                            <a href="">Movies</a>
+
+                            <DropdownMenu>
+                                <DropdownMenuTrigger>Profile</DropdownMenuTrigger>
+                                <DropdownMenuContent>
+                                    <DropdownMenuLabel>Login or sign up here</DropdownMenuLabel>
+                                    <DropdownMenuSeparator />
+                                    <DropdownMenuItem>Login</DropdownMenuItem>
+                                    <DropdownMenuItem>Sign up</DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+                        </div>
                         <DrawerFooter>
                             <DrawerClose>
-                                <button className="outline">Cancel</button>
+                                <button className="">Close</button>
                             </DrawerClose>
                         </DrawerFooter>
                     </DrawerContent>
