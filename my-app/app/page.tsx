@@ -1,21 +1,17 @@
-
+"use client"
 import Image from "next/image"
  
 import { AspectRatio } from "@/components/ui/aspect-ratio"
-import Search from "@/components/Search"; 
+import NewSearch from "@/components/NewSearch"; 
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col ">
-      <div className="w-full relative">
+      <div className="w-full absolute ">
       
-        <AspectRatio ratio={16 / 9} className="bg-muted lg:h-[73.33%]">
-        <div className="absolute text-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 w-1/3">
-            <h1 className="text-center text-4xl">Movio</h1>
-            <p>Search for movies and actors</p>
-            <Search />
-          </div>
-        
+        <AspectRatio ratio={16 / 9} className="bg-muted lg:h-[73.33%] ">
+      
+  
        
        
           <Image
@@ -25,6 +21,16 @@ export default function Home() {
             className="rounded-md object-cover"
           />
         </AspectRatio>
+
+        <div className="absolute  h-full text-center  left-1/2 transform  -translate-x-[50%] -translate-y-[73.33%] z-40 lg:w-1/3">
+            <div className="flex flex-col justify-center h-auto">
+            <h1 className="text-center text-4xl">Movio</h1>
+            <p>Find your Movie, Tv-show and actor info here.</p>
+            
+            <NewSearch />
+            </div>
+          </div>
+        
       </div>
      
     </main>

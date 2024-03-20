@@ -36,9 +36,11 @@ function Search() {
             const tvShowsResponse = await getMovieData('tv', { query: searchTerm });
             const actorsResponse = await getMovieData('actors', { query: searchTerm });
   
-            const movies = moviesResponse && Array.isArray(moviesResponse.results) ? moviesResponse.results : [];
-            const tvShows = tvShowsResponse && Array.isArray(tvShowsResponse.results) ? tvShowsResponse.results : [];
-            const actors = actorsResponse && Array.isArray(actorsResponse.results) ? actorsResponse.results : [];
+            const movies = moviesResponse.results;
+            const tvShows = tvShowsResponse.results;
+            const actors = actorsResponse.results;
+
+            
   
             setSearchResults({ movies, tvShows, actors });
           } catch (error) {
@@ -60,7 +62,7 @@ function Search() {
   return (
     <Command>
       <CommandInput
-        placeholder="Type a command or search..."
+        placeholder="search..."
         onFocus={() => setInputFocused(true)}
         onBlur={() => setInputFocused(false)}
         value={searchTerm}
